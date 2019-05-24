@@ -44,9 +44,7 @@ git clone git@github.com:Netflix/repokid.git
 cd ../../
 
 # Create a virtual environment Python-2.7 with environment requirements
-echo "Ensure Python2.7 is installed... Attempting to create virtual environment with Python2.7..."
-sudo apt install python2.7
-sudo apt install python2-pip
+echo "Ensure Python2.7/Virtual-Environmoent is installed... Attempting to create virtual environment with Python2.7..."
 
 python2 -m pip install virtualenv
 python2 -m virtualenv aardvark_repokid_env
