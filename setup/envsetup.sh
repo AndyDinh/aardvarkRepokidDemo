@@ -31,7 +31,7 @@ cd ../aardvark_repokid
 mkdir aardvark
 echo "Cloning Aardvark github environment..."
 cd aardvark
-git clone git@github.com:Netflix-Skunkworks/aardvark.git
+git clone https://github.com/Netflix-Skunkworks/aardvark.git
 cd ..
 
 # copying files
@@ -42,7 +42,7 @@ cp "../../setup/base_configs.json" "./customize/default_repokid_configs.json"
 mkdir repokid
 echo "Cloning Repokid github environment..."
 cd repokid
-git clone git@github.com:Netflix/repokid.git
+git clone https://github.com/Netflix/repokid.git
 cd ../../
 
 # Create a virtual environment Python-2.7 with environment requirements
