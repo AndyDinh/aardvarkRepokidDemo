@@ -5,6 +5,7 @@
 echo "Setting up environment folder for aardvark and repokid..."
 wget https://s3-us-west-2.amazonaws.com/dynamodb-local/dynamodb_local_latest.tar.gz
 
+sudo apt install git -y || sudo yum install git -y
 sudo apt install awscli -y || sudo yum install awscli -y
 sudo apt install python2.7 -y || sudo yum install python2.7 -y
 sudo apt install python2-pip -y || sudo yum install python2-pip -y
