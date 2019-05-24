@@ -18,7 +18,7 @@ Instructions provided to install Aardvark and Repokid
 
 **To set up Aardvark & Repokid, you will need to**:
 
-1. Move to the new dir (`aardvark_repokid_security`) and activate the provided virtual environment
+1. Move to the new dir (`aardvark_repokid_demo`) and activate the provided virtual environment
   - `source aardvark_repokid_env/bin/activate`
 2. Set up a localized DynamoDB database
 3. Set up a local postgreSQL database for the Aardvark services (utilizes Swagger)
@@ -46,9 +46,9 @@ To set this up:
 
 - Open a new terminal
   - In VSCode, `Ctrl+\` to split terminal
-- Run `source aardvark_repokid_env/bin/activate` in `aardvark_repokid_security` dir, if not already running
+- Run `source aardvark_repokid_env/bin/activate` in `aardvark_repokid_demo` dir, if not already running
 - Move to the Aardvark dir
-  - ` cd **/aardvark_repokid_security/aardvark_repokid/aardvark`
+  - ` cd **/aardvark_repokid_demo/aardvark_repokid/aardvark`
 - Run the following to set up aardvark:
   1. `python setup.py develop`
   2. `aardvark config` -- provide the correct inputs for each prompt for the setup (`config.py`)
@@ -132,7 +132,7 @@ $ aardvark config               Creates a config.py configuration file from user
 <span style="color:red;">**NOTE:**</span> You will need to add your IAM user into the **Trusted entities** section of the **"RepokidRole" role** prior to setting up Repokid
 
 - **AFTER** setting up Aardvark, move into the Repokid dir.
-  - `cd **/aardvark_repokid_security/aardvark_repokid/repokid`
+  - `cd **/aardvark_repokid_demo/aardvark_repokid/repokid`
 - Run the following to get Repokid up within the Repokid dir:
   - `python setup.py develop`
   - `repokid config config.json`
