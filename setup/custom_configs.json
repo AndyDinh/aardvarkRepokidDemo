@@ -1,1 +1,86 @@
-
+{
+    "aardvark_api_location": "http://localhost:5000/api/1/advisors", 
+    "active_filters": [ 
+        "repokid.filters.optout:OptOutFilter"
+    ], 
+    "connection_iam": {
+        "assume_role": "RepokidRole", 
+        "region": "us-east-1", 
+        "session_name": "repokid"
+    }, 
+    "dispatcher": {
+        "from_rr_sns": "RESPONSES_FROM_REPOKID_SNS_ARN", 
+        "region": "us-east-1", 
+        "session_name": "repokid", 
+        "to_rr_queue": "COMMAND_QUEUE_TO_REPOKID_URL"
+    }, 
+    "dynamo_db": {
+        "account_number": "<YOUR AWS ACCOUNT NUMBER>", 
+        "assume_role": "RepokidRole", 
+        "endpoint": "http://localhost:8010", 
+        "region": "us-east-1", 
+        "session_name": "repokid"
+    }, 
+    "filter_config": {
+        "AgeFilter": {
+            "minimum_age": 15
+        }, 
+        "BlocklistFilter": {
+            "all": [], 
+            "blocklist_bucket": {
+                "account_number": "<S3_blocklist_account>", 
+                "assume_role": "<S3_blocklist_assume_role>", 
+                "bucket": "<BLOCKLIST_BUCKET>", 
+                "key": "<PATH/blocklist.json>", 
+                "region": "<S3_blocklist_region>"
+            }
+        }
+    }, 
+    "hooks": [
+        "repokid.hooks.loggers"
+    ], 
+    "logging": {
+        "disable_existing_loggers": "False", 
+        "formatters": {
+            "standard": {
+                "format": "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]"
+            }
+        }, 
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler", 
+                "formatter": "standard", 
+                "level": "INFO", 
+                "stream": "ext://sys.stdout"
+            }, 
+            "file": {
+                "backupCount": 100, 
+                "class": "logging.handlers.RotatingFileHandler", 
+                "encoding": "utf8", 
+                "filename": "repokid.log", 
+                "formatter": "standard", 
+                "level": "INFO", 
+                "maxBytes": 10485760
+            }
+        }, 
+        "loggers": {
+            "repokid": {
+                "handlers": [
+                    "file", 
+                    "console"
+                ], 
+                "level": "INFO"
+            }
+        }, 
+        "version": 1
+    }, 
+    "opt_out_period_days": 90, 
+    "repo_requirements": {
+        "exclude_new_permissions_for_days": 14, 
+        "oldest_aa_data_days": 5
+    }, 
+    "repo_schedule_period_days": 7, 
+    "warnings": {
+        "unknown_permissions": false
+    }
+}
