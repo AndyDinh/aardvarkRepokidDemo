@@ -1,4 +1,4 @@
-
+{
     "aardvark_api_location": "<AARDVARK_API_LOCATION>", 
     "active_filters": [
         "repokid.filters.age:AgeFilter", 
