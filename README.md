@@ -9,9 +9,19 @@ Instructions provided to install Aardvark and Repokid
 
 ## Setup Requirements
 
+<!-- set up environment for aws configure before running this -->
+
 **Known Dependencies**:
 
-- Aardvark
+- AWS Environment
+  - **AWS credentials**: run `aws configure`
+
+- DynamoDB Local Environment
+  - `default-jre`
+  - `openjdk-11-jre-headless`
+  - `openjdk-8-jre-headless`
+
+- **Aardvark**
   - `libpq-dev`
 
 <br>
@@ -32,7 +42,7 @@ This will store your AWS environment data that **Repokid** uses locally -- _prov
 
 To set this up:
 - Move to the local dynamodb folder (update the path to your location)
-  - `java -Djava.library.path=/SET/YOUR/PATH/HERE/DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory -port 8010`
+  - `java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb -inMemory -port 8010`
 - Leave this running. You have a localized dynamodb now.
   - To validate this, `aws dynamodb list-tables --endpoint-url http://localhost:8010`
 
@@ -137,7 +147,7 @@ $ aardvark config               Creates a config.py configuration file from user
   - `python setup.py develop`
   - `repokid config config.json`
     - After the initial configurations are set, do the following:
-        - If desired, use the preconfigured file --  run `cp ../custom_configs/repokid_configs.json ./configs.json`
+        - If desired, use the preconfigured file --  run `cp ../custom_configs/custom_repokid_configs.json ./configs.json`
         - To create your own custom configuration file -- update the `default_repokid_configs.json` file and run `cp ../custom_configs/default_repokid_configs.json ./configs.json`
             - Use the [Repokid Github](https://github.com/Netflix/repokid) for references on how to set this up (can also be seen in the Repokid `README.md`)
   - `repokid update_role_cache [AWS ACCOUNT]` -- update the cached data (cached data provided in the local DynamoDB)
@@ -166,19 +176,3 @@ $ repokid cancel_scheduled_repo <account_number> [--role=ROLE_NAME] [--all]
 $ repokid repo_scheduled_roles <account_number> [-c]
 $ repokid repo_stats <output_filename> [--account=ACCOUNT_NUMBER]
 ```
-
-
-<!-- 
-echo `curl http://localhost:5000/api/1/advisors`>> ../../aardvark_logs/advisor_results.json
-repokid update_role_cache <ACCOUNT_NUMBER>
-cp ./repokid.log ../../logs/repokid_logs/repokid.log
-
-repokid display_role_cache <ACCOUNT_NUMBER> 
-cp ./table.csv ../../logs/repokid_logs/permissions_table.csv
-
-repokid display_role <ACCOUNT_NUMBER> <ROLE_NAME>
-repokid repo_all_roles <ACCOUNT_NUMBER> -c
-schedule_repo 
-
-https://github.com/Netflix-Skunkworks/repokid-extras
---> 
