@@ -1,5 +1,8 @@
 ## To run the environment...
 
+**NOTE:** If this is run in a Cloud9 environment, you will want to run the Aardvark and Repokid Environment as root: `sudo su`
+  - This is due to the fact that AWS Cloud9 prevents regular users from storing AWS credentials
+
 1. Configure your credentials: `aws configure`
     - NOTE: If running in Cloud9, must use `sudo aws configure`
 2. Run the environment setup in this directory: `envsetup.sh`
@@ -17,10 +20,11 @@
     - `aardvark update -a [YOUR AWS ACCOUNT]`
     - `aardvark start_api -b 0.0.0.0:5000`
     - Leave this terminal running
+    - To validate this is running on Cloud9, copy the logs as validation or run curl calls -- no interface can be seen with this environment, so you will have to settle on data retrieval...
 7. Set up Repokid environment -- move to Repokid directory and run the following:
     - `python setup.py develop`
     - `repokid config config.json`
-    - For custom file changes: `cp ../custom_configs/custom_configs2.py ./config.json`
+    - For custom file changes: `cp ../custom_configs/custom_configs2.json ./config.json`
     - `repokid update_role_cache [AWS ACCOUNT]`
 
 For any undesired modifications, rollbacks are available: `repokid rollback role [AWS ACCOUNT] [Role Name]`
